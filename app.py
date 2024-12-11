@@ -6,6 +6,10 @@ from flask import Flask, request, jsonify
 
 # Disable GPU usage if CUDA drivers are not available
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+tf.config.set_visible_devices([], 'GPU')
+
+# Suppress TensorFlow logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Flask app
 app = Flask(__name__)

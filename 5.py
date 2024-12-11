@@ -1,5 +1,5 @@
 import tensorflow as tf
-from PIL import Image, ImageOps  # Install pillow instead of PIL
+from PIL import Image, ImageOps
 import numpy as np
 
 # Disable scientific notation for clarity

@@ -1,3 +1,4 @@
+import os
 import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
@@ -5,8 +6,14 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Debugging: Check if the model directory exists and list its contents
+model_dir = "saved_model"
+if not os.path.exists(model_dir):
+    raise FileNotFoundError(f"Model directory '{model_dir}' does not exist.")
+print(f"Contents of '{model_dir}': {os.listdir(model_dir)}")
+
 # Load the model
-model = tf.saved_model.load("saved_model")
+model = tf.saved_model.load(model_dir)
 
 # Load the labels
 class_names = open("labels.txt", "r").readlines()
